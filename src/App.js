@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "@mui/material";
+import Hero from "./components/Hero";
+import NavBar from "./components/NavBar";
+import Message from "./components/Message";
+import Feature from "./components/Feature";
+import FeatureTwo from "./components/FeatureTwo";
+import Testimonial from "./components/Testimonial";
+import Blog from "./components/Blog";
+import Proud from "./components/Proud";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar />
+      <Box
+        style={{
+          marginTop: "90px",
+        }}
+      >
+        <Hero />
+        <Message />
+        <Feature />
+        <FeatureTwo />
+        <Testimonial />
+        <Blog />
+        <Proud />
+        <Footer />
+      </Box>
     </div>
   );
 }
