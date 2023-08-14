@@ -13,7 +13,7 @@ const Component = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  padding: "48px 16px 80px 16px",
+  padding: "48px 16px 40px 16px",
 });
 
 const FirstBox = styled(Grid)({
@@ -21,22 +21,25 @@ const FirstBox = styled(Grid)({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  textAlign: "center",
 });
 
 const Heading = styled(Typography)({
   color: "#fff",
-  fontSize: "36px",
-  lineHeight: "42px",
-  letterSpacing: "-0.36px",
+  fontSize: "52px",
+  lineHeight: "60px",
+  fontWeight: "700",
+  fontStyle: "normal",
+  letterSpacing: "-0.52px",
+  margin: "24px 20px 24px 0",
 });
 
 const SubHeading = styled(Typography)({
   color: "#b1ccfb",
-  fontSize: "16px",
-  lineHeight: "24px",
+  fontSize: "18px",
+  lineHeight: "26px",
   letterSpacing: "-0.1px",
   margin: "16px 0 24px 0",
+  fontWeight: "400",
 });
 
 const ButtonStyle = styled(Button)({
@@ -48,24 +51,23 @@ const ButtonStyle = styled(Button)({
 
 const Support = styled(Typography)({
   color: "#fff",
-  fontSize: "12px",
+  fontSize: "14px",
   fontWeight: "500",
   letterSpacing: "-0.1px",
-  margin: "16px 0",
+  margin: "35px 470px 24px 0px",
 });
 
 const ImgBox = styled(Box)({
   background: "#2B63D9",
-  marginTop: "15px",
+  margin: "auto",
   display: "flex",
-  justifyContent: "center",
   alignItems: "center",
 });
 
 const Images = styled("img")({
   width: "80px",
   height: "auto",
-  marginRight: "10px",
+  marginLeft: "20px",
 });
 
 const SideImgBox = styled(Grid)({
@@ -78,6 +80,10 @@ const SideImage = styled("img")({
   width: "100%",
   border: "none",
   height: "auto",
+});
+
+const ImgBoxx = styled(Box)({
+  margin: " 0 210px 0 0",
 });
 
 const Hero = () => {
@@ -96,18 +102,20 @@ const Hero = () => {
               <ButtonStyle variant="contained">Get Started</ButtonStyle>
             </Box>
             <Support>Who supports us</Support>
-            <ImgBox>
-              <Images src={LogoOne} alt="logo" />
-              <Images src={LogoTwo} alt="logo" />
-              <Images src={LogoThree} alt="logo" />
-              <Images
-                src={LogoFour}
-                alt="logo"
-                style={{
-                  background: "black",
-                }}
-              />
-            </ImgBox>
+            <ImgBoxx>
+              <ImgBox>
+                <Images src={LogoOne} alt="logo" />
+                <Images src={LogoTwo} alt="logo" />
+                <Images src={LogoThree} alt="logo" />
+                <Images
+                  src={LogoFour}
+                  alt="logo"
+                  style={{
+                    background: "black",
+                  }}
+                />
+              </ImgBox>
+            </ImgBoxx>
           </FirstBox>
           <SideImgBox item xs={12} md={6}>
             <SideImage src={Image1} alt="image" />

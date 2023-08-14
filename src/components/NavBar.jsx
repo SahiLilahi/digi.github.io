@@ -3,36 +3,39 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import Divider from "@mui/material/Divider"; // Import Divider
-import Button from "@mui/material/Button"; // Import Button
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"; // Import KeyboardArrowDownIcon
-import Hidden from "@mui/material/Hidden"; // Correct import
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import Divider from "@mui/material/Divider";
+
 import styled from "@emotion/styled";
 import logo from "../images/logo.jpg";
+import { Button } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const Component = styled(AppBar)({
   display: "flex",
-  width: "100%",
-  height: "90px",
-  justifyContent: "center",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "10px 20px",
   borderBottom: "1px solid #648EF7",
   background: "#2B63D9",
 });
 
-const Image = styled("img")({
-  height: "40px",
-  width: "160px",
-});
+const Image = styled("img")`
+  height: 40px;
+  width: 160px;
+  margin: 0 120px 0 0;
+`;
 
 const BoxStyle = styled(Box)({
   display: "flex",
-  flexGrow: 1,
-  justifyContent: "flex-end",
+  alignItems: "center",
+  gap: "10px",
 });
 
 const MenuButton = styled(Button)({
@@ -41,41 +44,49 @@ const MenuButton = styled(Button)({
   fontFamily: "Inter",
   fontWeight: "600",
   lineHeight: "22px",
-  marginRight: "20px",
   textTransform: "none",
-});
-const SignupButton = styled(Button)({
-  width: "90px",
-  height: "35px",
-  fontWeight: "bold",
-  fontSize: "10xp",
-  marginLeft: "24px",
-  textTransform: "none",
-  backgroundColor: "#437EF7",
+  margin: "0 0 0 15px",
 });
 
 const LoginButton = styled(Button)({
   color: "#fff",
-  width: "44px",
-  height: "22px",
-  fontWeight: "bold",
-  fontSize: "10xp",
+  fontWeight: "600",
+  fontSize: "15px",
   textTransform: "none",
+  marginLeft: "100px",
+  lineHeight: "22px",
+});
+
+const SignupButton = styled(Button)({
+  fontWeight: "600",
+  fontSize: "15px",
+  textTransform: "none",
+  backgroundColor: "#437EF7",
+  lineHeight: "22px",
 });
 
 const NavBar = () => {
-  const [openDrawer, setOpenDrawer] = React.useState(false);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
-  const toggleDrawer = () => {
-    setOpenDrawer(!openDrawer);
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setDrawerOpen(open);
   };
 
-  const drawerContent = (
+  const list = (
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer}
-      onKeyDown={toggleDrawer}
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
     >
       <List>
         <ListItem button>
@@ -90,28 +101,45 @@ const NavBar = () => {
         <ListItem button>
           <ListItemText primary="Contact" />
         </ListItem>
-        <Divider />
-        <ListItem button>
-          <ListItemText primary="Log in" />
-        </ListItem>
-        <ListItem button>
-          <Button variant="contained">Sign up</Button>
-        </ListItem>
       </List>
+      <Divider />
+      <Box display="flex" flexDirection="column" alignItems="center" p={2}>
+        <LoginButton
+          variant="contained"
+          style={{
+            margin: "4px",
+          }}
+        >
+          Log in
+        </LoginButton>
+        <SignupButton variant="contained">Sign up</SignupButton>
+      </Box>
     </Box>
   );
 
   return (
     <Component>
       <Toolbar>
-        <Hidden mdUp>
-          <IconButton color="inherit" onClick={toggleDrawer}>
-            <MenuIcon />
-          </IconButton>
-        </Hidden>
         <Image src={logo} alt="logo" />
-        <BoxStyle>
-          <Hidden smDown>
+        {isSmallScreen ? (
+          <>
+            <IconButton
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={toggleDrawer(false)}
+            >
+              {list}
+            </Drawer>
+          </>
+        ) : (
+          <BoxStyle>
             <MenuButton>Home</MenuButton>
             <MenuButton>Our Products</MenuButton>
             <MenuButton>
@@ -120,14 +148,9 @@ const NavBar = () => {
             <MenuButton>Contact</MenuButton>
             <LoginButton>Log in</LoginButton>
             <SignupButton variant="contained">Sign up</SignupButton>
-          </Hidden>
-        </BoxStyle>
+          </BoxStyle>
+        )}
       </Toolbar>
-      <Hidden smUp implementation="css">
-        <Drawer anchor="left" open={openDrawer} onClose={toggleDrawer}>
-          {drawerContent}
-        </Drawer>
-      </Hidden>
     </Component>
   );
 };

@@ -70,6 +70,8 @@ const Footer = () => {
         <Container
           style={{
             borderBottom: "1px solid #A5ACBA",
+            paddingBottom: "10px",
+            marginBottom: "10px",
           }}
         >
           <Grid container spacing={2}>
@@ -123,9 +125,9 @@ const Footer = () => {
             </Grid>
             <Grid item xs={12} md={6}>
               <SocialBox>
-                <FacebookIcon />
-                <GoogleIcon />
-                <AppleIcon />
+                <FacebookIcon style={{ marginRight: "15px" }} />
+                <GoogleIcon style={{ marginRight: "15px" }} />
+                <AppleIcon style={{ marginRight: "15px" }} />
                 <InstagramIcon />
               </SocialBox>
             </Grid>
