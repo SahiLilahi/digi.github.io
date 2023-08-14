@@ -1,3 +1,5 @@
+import React from "react";
+import styled from "@emotion/styled";
 import {
   Box,
   Button,
@@ -5,9 +7,9 @@ import {
   CardActions,
   CardContent,
   Typography,
+  Grid,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import styled from "@emotion/styled";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
 import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
 import ShareIcon from "@mui/icons-material/Share";
@@ -16,12 +18,9 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 
 const Component = styled(Box)({
-  height: "80vh",
   background: "#fff",
-  width: "1285px",
-  justifyContent: "center",
+  padding: "48px 16px 80px 16px",
   alignItems: "center",
-  marginBottom: "20px",
 });
 
 const TopBox = styled(Box)({
@@ -38,7 +37,7 @@ const Heading = styled(Typography)({
   letterSpacing: "-0.64px",
   alignSelf: "center",
   color: "#272D37",
-  margin: "64px 0px 16px 0px",
+  marginBottom: "16px",
   textAlign: "center",
 });
 
@@ -50,35 +49,20 @@ const SubHeading = styled(Typography)({
   letterSpacing: "-0.1px",
   color: "#5F6D7E",
   alignSelf: "center",
-  margin: "25px 0px 75px 0px",
+  marginBottom: "40px",
   textAlign: "center",
 });
 
-const OneBox = styled(Box)({
-  display: "flex",
-  margin: "15px 10px 20px 23px",
-});
-
-const TwoBox = styled(Box)({
-  display: "flex",
-  margin: "15px 5px 20px 23px",
-});
-
-const MainnBox = styled(Box)({
-  margin: "15px 5px 20px 20px",
-});
-
 const Cardd = styled(Card)({
-  height: "250px",
-  width: "384px",
+  height: "100%",
+  width: "100%",
   padding: "5px",
-  margin: "10px 10px 20px 10px",
   border: "none",
   boxShadow: "none",
-});
-
-const CarddContent = styled(CardContent)({
-  padding: "5px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  background: "#F9FAFB",
 });
 
 const CardHeading = styled(Typography)({
@@ -87,24 +71,23 @@ const CardHeading = styled(Typography)({
   fontWeight: "600",
   lineHeight: "30px",
   letterSpacing: "-0.22px",
-  marginTop: "20px",
   color: "#272d37",
+  marginBottom: "8px",
 });
+
 const CardSub = styled(Typography)({
-  fontFamily: "Inter",
   fontSize: "16px",
-  fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "24px",
   letterSpacing: "-0.1px",
-  margin: "12px 0 16px 0",
   color: "#5f6d7e",
+  marginBottom: "16px",
 });
+
 const ButtonStyle = styled(Button)({
-  fontStyle: "normal",
+  fontSize: "15px",
   fontWeight: "600",
   lineHeight: "22px",
-  fontSize: "15px",
 });
 
 const Message = () => {
@@ -113,12 +96,12 @@ const Message = () => {
       <TopBox>
         <Heading>Messaging for all</Heading>
         <SubHeading>
-          User generated content in real-time will have multiple touchpoints for
+          User-generated content in real-time will have multiple touchpoints for
           offshoring.
         </SubHeading>
       </TopBox>
-      <MainnBox>
-        <OneBox>
+      <Grid container spacing={2.5}>
+        <Grid item xs={12} md={6} lg={4}>
           <Cardd>
             <Box
               style={{
@@ -128,23 +111,26 @@ const Message = () => {
                 width: "30px",
                 borderRadius: "100%",
                 padding: "8px",
+                margin: "0 auto",
               }}
             >
               <Diversity2Icon style={{ margin: "2px 2px 0 3px" }} />
             </Box>
-            <CarddContent>
+            <CardContent>
               <CardHeading>Easier Work Organization</CardHeading>
               <CardSub>
                 Efficiently unleash cross-media information without cross-media
-                value. Quickly timely deliverables for real-time schemas.{" "}
+                value. Quickly timely deliverables for real-time schemas.
               </CardSub>
-            </CarddContent>
+            </CardContent>
             <CardActions>
               <ButtonStyle color="primary" endIcon={<ArrowForwardIcon />}>
                 Learn more
               </ButtonStyle>
             </CardActions>
           </Cardd>
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
           <Cardd>
             <Box
               style={{
@@ -154,23 +140,26 @@ const Message = () => {
                 width: "30px",
                 borderRadius: "100%",
                 padding: "8px",
+                margin: "0 auto",
               }}
             >
               <AddCircleIcon style={{ margin: "2px 2px 0 3px" }} />
             </Box>
-            <CarddContent>
+            <CardContent>
               <CardHeading>Fast Connection</CardHeading>
               <CardSub>
-                Completely pursue scalable customer cross- media through
-                potentialities. Holistically quickly installed portals.{" "}
+                Completely pursue scalable customer cross-media through
+                potentialities. Holistically quickly installed portals.
               </CardSub>
-            </CarddContent>
+            </CardContent>
             <CardActions>
               <ButtonStyle color="primary" endIcon={<ArrowForwardIcon />}>
                 Learn more
               </ButtonStyle>
             </CardActions>
           </Cardd>
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
           <Cardd>
             <Box
               style={{
@@ -180,25 +169,26 @@ const Message = () => {
                 width: "30px",
                 borderRadius: "100%",
                 padding: "8px",
+                margin: "0 auto",
               }}
             >
               <ShareIcon style={{ margin: "2px 2px 0 3px" }} />
             </Box>
-            <CarddContent>
+            <CardContent>
               <CardHeading>Streamlined Processes</CardHeading>
               <CardSub>
                 Objectively innovate empowered scalable manufactured products
                 whereas parallel platforms predominate extensible.
               </CardSub>
-            </CarddContent>
+            </CardContent>
             <CardActions>
               <ButtonStyle color="primary" endIcon={<ArrowForwardIcon />}>
                 Learn more
               </ButtonStyle>
             </CardActions>
           </Cardd>
-        </OneBox>
-        <TwoBox>
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
           <Cardd>
             <Box
               style={{
@@ -208,25 +198,28 @@ const Message = () => {
                 width: "30px",
                 borderRadius: "100%",
                 padding: "8px",
+                margin: "0 auto",
               }}
             >
               <IntegrationInstructionsIcon
                 style={{ margin: "2px 2px 0 3px" }}
               />
             </Box>
-            <CarddContent>
+            <CardContent>
               <CardHeading>Easier Integrations</CardHeading>
               <CardSub>
-                Completely pursue scalable customer try through potentialities.
-                Pontificate portals installed. Efficiently unleash information.
+                Completely pursue scalable customer cross-media through
+                potentialities. Holistically quickly installed portals.
               </CardSub>
-            </CarddContent>
+            </CardContent>
             <CardActions>
               <ButtonStyle color="primary" endIcon={<ArrowForwardIcon />}>
                 Learn more
               </ButtonStyle>
             </CardActions>
           </Cardd>
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
           <Cardd>
             <Box
               style={{
@@ -236,23 +229,26 @@ const Message = () => {
                 width: "30px",
                 borderRadius: "100%",
                 padding: "8px",
+                margin: "0 auto",
               }}
             >
-              <AddBusinessIcon style={{ margin: "2px 2px 0 5px" }} />
+              <AddBusinessIcon style={{ margin: "2px 2px 0 3px" }} />
             </Box>
-            <CarddContent>
+            <CardContent>
               <CardHeading>Marketing Analytics</CardHeading>
               <CardSub>
                 Phosfluorescently engage worldwide methodologies with
                 web-enabled Interactively coordinate methodologies.
               </CardSub>
-            </CarddContent>
+            </CardContent>
             <CardActions>
               <ButtonStyle color="primary" endIcon={<ArrowForwardIcon />}>
                 Learn more
               </ButtonStyle>
             </CardActions>
           </Cardd>
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
           <Cardd>
             <Box
               style={{
@@ -262,25 +258,26 @@ const Message = () => {
                 width: "30px",
                 borderRadius: "100%",
                 padding: "8px",
+                margin: "0 auto",
               }}
             >
-              <DriveFileRenameOutlineIcon style={{ margin: "2px 2px 0 4px" }} />
+              <DriveFileRenameOutlineIcon style={{ margin: "2px 2px 0 3px" }} />
             </Box>
-            <CarddContent>
+            <CardContent>
               <CardHeading>Workflow Builder</CardHeading>
               <CardSub>
                 Collaboratively administrate turnkey service channels whereas
                 virtual e-tailers. This is objectively scalable metrics whereas.
               </CardSub>
-            </CarddContent>
+            </CardContent>
             <CardActions>
               <ButtonStyle color="primary" endIcon={<ArrowForwardIcon />}>
                 Learn more
               </ButtonStyle>
             </CardActions>
           </Cardd>
-        </TwoBox>
-      </MainnBox>
+        </Grid>
+      </Grid>
     </Component>
   );
 };
